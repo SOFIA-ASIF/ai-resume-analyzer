@@ -9,12 +9,13 @@ export const meta = () => ([
 const Auth = () => {
     const { isLoading ,auth } = usePuterStore();
     const location = useLocation();
-    const next = location.search.split('next=')[1];
+    const params = new URLSearchParams(location.search);
+    const next = params.get("next") || "/";
     const navigate = useNavigate();
 
     useEffect(() => {
         if(auth.isAuthenticated) navigate(next);
-    }, [auth.isAuthenticated, next]);
+    }, [auth.isAuthenticated, next, navigate]);
 
     return (
         <main className="bg-[url('/images/bg-auth.svg')] bg-cover min-h-screen flex items-center justify-center">
@@ -26,7 +27,7 @@ const Auth = () => {
                     </div>
                     <div>
                         {isLoading ? (
-                            <button className="auth-button animate-pulse">
+                            <button className="auth-button animate-pulse" disabled>
                                 <p>Signing you in...</p>
                             </button>
                         ) : (
