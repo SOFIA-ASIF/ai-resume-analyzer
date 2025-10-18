@@ -74,7 +74,7 @@ export default function Home() {
             </div>
         )}
     </section>
-      <footer className="w-full text-center py-4 absolute bottom-0">
+      <footer className="w-full text-center py-4 bottom-0">
   <span className="text-gray-500 font-semibold">
     © 2025 Sofia Asif. All rights reserved.
   </span>
